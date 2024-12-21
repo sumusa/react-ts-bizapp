@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --black: 0 0% 15%; /* #262626 */
+    --brown: 10 22% 45%; /* #A37A74 */
+    --light-orange: 17 100% 98%; /* #FFF5EE */
+    --white: 15 20% 90%; /* #f2f4f7 */
+
+    /* Theme application */
+    --background: var(--light-orange);
+    --foreground: var(--black);
+
+    --card: var(--white);
+    --card-foreground: var(--black);
+
+    --popover: var(--white);
+    --popover-foreground: var(--black);
+
+    --primary: var(--brown);
+    --primary-foreground: var(--light-orange);
+
+    --secondary: var(--white);
+    --secondary-foreground: var(--black);
+
+    --muted: 15 20% 95%;
+    --muted-foreground: 10 22% 40%;
+
+    --accent: var(--brown);
+    --accent-foreground: var(--light-orange);
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--light-orange);
+
+    --border: 10 22% 90%;
+    --input: 10 22% 90%;
+    --ring: var(--brown);
+
+    --radius: 0.5rem;
+
+    /* Sidebar specific */
+    --sidebar-background: var(--white);
+    --sidebar-foreground: var(--black);
+    --sidebar-primary: var(--brown);
+    --sidebar-primary-foreground: var(--light-orange);
+    --sidebar-accent: var(--brown);
+    --sidebar-accent-foreground: var(--light-orange);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+  }
+
+  .dark {
+    --background: var(--black);
+    --foreground: var(--light-orange);
+
+    --card: 0 0% 20%;
+    --card-foreground: var(--light-orange);
+
+    --popover: 0 0% 20%;
+    --popover-foreground: var(--light-orange);
+
+    --primary: var(--brown);
+    --primary-foreground: var(--light-orange);
+
+    --secondary: var(--white);
+    --secondary-foreground: var(--black);
+
+    --muted: 10 22% 20%;
+    --muted-foreground: 10 22% 70%;
+
+    --accent: var(--brown);
+    --accent-foreground: var(--light-orange);
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: var(--light-orange);
+
+    --border: 10 22% 25%;
+    --input: 10 22% 25%;
+    --ring: var(--brown);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  [data-active="true"] {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    @apply shadow-md transition-all duration-200;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-brown/10 via-white/50 to-light-orange;
+  }
+
+  /* Active navigation item */
+  .nav-item-active {
+    @apply bg-accent text-accent-foreground font-medium;
+  }
+
+  /* Remove default autofill styles */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+    caret-color: hsl(var(--foreground));
+  }
+
+  /* Ensure autofilled inputs match your theme */
+  input:-webkit-autofill::first-line {
+    font-family: inherit;
+    color: hsl(var(--foreground)) !important;
+  }
+}
